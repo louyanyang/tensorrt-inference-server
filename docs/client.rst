@@ -430,3 +430,17 @@ the C++ example application at
 and a Python version at
 `src/clients/python/simple\_sequence\_client.py
 <https://github.com/NVIDIA/tensorrt-inference-server/blob/master/src/clients/python/simple_sequence_client.py>`_.
+
+Shape Tensor I/O
+^^^^^^^^^^^^^^^^
+
+TensorRT supports network I/O tensors that can be used to specify shape
+values. TRTIS allows users to deploy models with shape tensor I/O with
+a few restrictions if the batching is enabled. Firstly, client must
+specify a single shape tensor that will be use for the whole batch.
+Additionally, shape tensor must not include the batch size. Secondly,
+if an output tensor is a shape tensor, then it must be marked as a
+shape tensor in the plan.
+
+See :ref:`section--model-configuration` for correctly specifying model
+configuration to use shape tensor i/o.
